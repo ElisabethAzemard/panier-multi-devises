@@ -5,6 +5,7 @@
   <meta name="author" content="Elisabeth Azémard, M1DEV">
   <title>Panier multi-devises</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
 </head>
 <body>
   <?php
@@ -47,37 +48,53 @@
   ?>
 
 <!-- Exemple de mise en application -->
-  <table>
+<div class="hero is-warning">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Panier multi-devises
+      </h1>
+      <h2 class="subtitle">
+        1, 2, 3... Soleil !
+      </h2>
+    </div>
+  </div>
+</div>
+<section class="section">
+  <table class="table is-hoverable">
     <thead>
-      <tr>
-        <th>Produit</th>
-        <th>Taux par rapport au Dollar</th>
-        <th>Devise</th>
-        <th>Quantité</th>
-        <th>Prix unitaire</th>
-        <th>Prix total</th>
+      <tr class="">
+        <th class="has-text-centered">Produit</th>
+        <th class="has-text-centered">Taux par rapport au Dollar</th>
+        <th class="has-text-centered">Devise</th>
+        <th class="has-text-centered">Quantité</th>
+        <th class="has-text-centered">Prix unitaire</th>
+        <th class="has-text-centered">Prix total</th>
       </tr>
     </thead>
     <tbody>
     <?php
     foreach($listeProduits as $produit){
-      echo "<tr>
-              <td>".$produit->getNom()."</td>
-              <td>".$produit->getTauxDevise()."</td>
-              <td>".$devises->getNom($produit->getTauxDevise())."</td>
-              <td>".$produit->getQte()."</td>
-              <td>".$produit->getMontantUnitaire()."</td>
-              <td>".$produit->getMontantTotal()."</td>
+      echo "<tr class='has-text-centered'>
+              <td class='has-text-centered'>".$produit->getNom()."</td>
+              <td class='has-text-centered'>".$produit->getTauxDevise()."</td>
+              <td class='has-text-centered'>".$devises->getNom($produit->getTauxDevise())."</td>
+              <td class='has-text-centered'>".$produit->getQte()."</td>
+              <td class='has-text-centered'>".$produit->getMontantUnitaire()."</td>
+              <td class='has-text-centered'>".$produit->getMontantTotal()."</td>
             </tr>";
     }
     ?>
     </tbody>
-    <tr>
-      <td colspan="4" class="no-border"></td>
-      <th>TOTAL EN JPY<!--EUR, USD, GBP, etc.--></th>
-      <th><?php echo $panierYen; ?></th>
-    </tr>
+    <tfoot>
+      <tr>
+        <td colspan="4"></td>
+        <th>TOTAL EN JPY<!--EUR, USD, GBP, etc.--></th>
+        <th><?php echo $panierYen; ?></th>
+      </tr>
+    </tfoot>
   </table>
+</section>
 </body>
 </html>
 
